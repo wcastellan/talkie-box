@@ -14,4 +14,56 @@ body {
   .small {
     font-weight: 300;
     font-style: italic;
-  }  
+  }
+
+/* STYLING FOR SEARCH BAR */
+  .search{
+    width: 400px;
+  }
+  
+  .search > form {
+    width: 100%;
+  }
+  
+  .search > form > input {
+    width: 100%;
+  }
+  
+  .suggestions{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-top: 0px;
+    padding-right: 5px;
+  }
+  
+  .suggestion{
+    height: 80px;
+    padding: 15px 5px;
+    border-bottom: 1px solid #666;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .suggestion :hover{
+    background: gray;
+    cursor: pointer;
+  }
+  
+  .suggestion img {
+    width: 50px;
+    height: 75px;
+    border-radius: 3px;
+  }
+  
+  .media-info p {
+    margin: 5px 10px;
+    text-align: left;
+  }
+  
+  .media-title{
+    font-weight:bold;
+  }
+/* STYLING FOR SEARCH BAR */
