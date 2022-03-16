@@ -51,7 +51,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedMedias: { mediaId: mediaId } } },
+          { $pull: { savedMedias: { imdbID: imdbID } } },
           { new: true }
         );
         return updatedUser;
