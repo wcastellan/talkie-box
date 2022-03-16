@@ -7,6 +7,7 @@ import SearchBooks from "./pages/SearchBooks";
 import SavedBooks from "./pages/SavedBooks";
 import Navbar from "./components/Navbar";
 import Search from './components/Search';
+import Home from './pages/Home';
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -23,7 +24,7 @@ const client = new ApolloClient({
 
 function App() {
   useEffect(() => {
-    document.title = 'Talkie-Box'
+    document.title = 'talkie-box'
   }, [])
   
   return (
@@ -31,8 +32,9 @@ function App() {
       <Router>
         <>
           <Navbar />
+          <Search />
           <Switch>
-            <Route exact path="/" component={Search} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/saved" component={SavedBooks} />
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>

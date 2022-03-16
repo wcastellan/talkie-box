@@ -20,9 +20,9 @@ const AppNavbar = () => {
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
-              <Nav.Link as={Link} to='/'>
+              {/* <Nav.Link as={Link} to='/'>
                 Search For Your Favorite Movies, Television Shows, and Video Games!
-              </Nav.Link>
+              </Nav.Link> */}
               {/* if user is logged in show saved books and logout */}
               {Auth.loggedIn() ? (
                 <>
