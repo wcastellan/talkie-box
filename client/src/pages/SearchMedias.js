@@ -10,31 +10,31 @@ import {
 } from "react-bootstrap";
 
 import Auth from "../utils/auth";
-import { searchGoogleBooks } from "../utils/API";
-import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { SAVE_BOOK } from "../utils/mutations";
+// import { searchomdb } from "../components/Search";
+import { saveMediaIds, getSavedMediaIds } from "../utils/localStorage";
+import { SAVE_MEDIA } from "../utils/mutations";
 import { useMutation } from "@apollo/react-hooks";
 
-const SearchBooks = () => {
+const SearchMedias = () => {
   // create state for holding returned google api data
-  const [searchedBooks, setSearchedBooks] = useState([]);
+  const [searchedMedias, setSearchedMedias] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState("");
 
   // create state to hold saved bookId values
-  const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
+  const [savedMediaIds, setSavedMediaIds] = useState(getSavedMediaIds());
 
   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     // let isMounted = true; // note this flag denote mount status
     return () => {
-      saveBookIds(savedBookIds);
+      saveMediaIds(savedMediaIds);
       // isMounted = false;
     };
   });
 
-  const [saveBook, { error }] = useMutation(SAVE_BOOK);
+  const [saveMedia, { error }] = useMutation(SAVE_MEDIA);
 
   // create method to search for books and set state on form submit
   const handleFormSubmit = async (event) => {
@@ -44,34 +44,34 @@ const SearchBooks = () => {
       return false;
     }
 
-    try {
-      const response = await searchGoogleBooks(searchInput);
+    // try {
+    //   const response = await searchomdb(searchInput);
 
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
+    //   if (!response.ok) {
+    //     throw new Error("something went wrong!");
+    //   }
 
-      const { items } = await response.json();
+    //   const { items } = await response.json();
 
-      const bookData = items.map((book) => ({
-        bookId: book.id,
-        authors: book.volumeInfo.authors || ["No author to display"],
-        title: book.volumeInfo.title,
-        description: book.volumeInfo.description,
-        image: book.volumeInfo.imageLinks?.thumbnail || "",
-      }));
+    //   const bookData = items.map((book) => ({
+    //     bookId: book.id,
+    //     authors: book.volumeInfo.authors || ["No author to display"],
+    //     title: book.volumeInfo.title,
+    //     description: book.volumeInfo.description,
+    //     image: book.volumeInfo.imageLinks?.thumbnail || "",
+    //   }));
 
-      setSearchedBooks(bookData);
-      setSearchInput("");
-    } catch (err) {
-      console.error(err);
-    }
+    //   setSearchedMedias(mediaData);
+    //   setSearchInput("");
+    // } catch (err) {
+    //   console.error(err);
+    // }
   };
 
   // create function to handle saving a book to our database
-  const handleSaveBook = async (bookId) => {
+  const handleSaveMedia = async (imdbID) => {
     // find the book in `searchedBooks` state by the matching id
-    const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+    const mediaToSave = searchedMedias.find((media) => media.imdbID === imdbID);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -81,9 +81,9 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await saveBook({
+      const response = await saveMedia({
         variables: {
-          input: bookToSave,
+          input: mediaToSave,
         },
       });
 
@@ -91,8 +91,8 @@ const SearchBooks = () => {
         throw new Error("something went wrong!");
       }
 
-      // if book successfully saves to user's account, save book id to state
-      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+      // if movie successfully saves to user's account, save movie id to state
+      setSavedMediaIds([...savedMediaIds, mediaToSave.imdbID]);
     } catch (err) {
       console.error(err);
     }
@@ -112,7 +112,7 @@ const SearchBooks = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type="text"
                   size="lg"
-                  placeholder="Search for a book"
+                  placeholder="Search for a movie"
                 />
               </Col>
               <Col xs={12} md={4}>
@@ -127,38 +127,38 @@ const SearchBooks = () => {
 
       <Container>
         <h2>
-          {searchedBooks.length
-            ? `Viewing ${searchedBooks.length} results:`
-            : "Search for a book to begin"}
+          {searchedMedias.length
+            ? `Viewing ${searchedMedias.length} results:`
+            : "Search for a movie to begin"}
         </h2>
         <CardColumns>
-          {searchedBooks.map((book) => {
+          {searchedMedias.map((media) => {
             return (
-              <Card key={book.bookId} border="dark">
-                {book.image ? (
+              <Card key={media.imdbID} border="dark">
+                {media.Poster ? (
                   <Card.Img
-                    src={book.image}
-                    alt={`The cover for ${book.title}`}
+                    src={media.Poster}
+                    alt={`The cover for ${media.Title}`}
                     variant="top"
                   />
                 ) : null}
                 <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
+                  <Card.Title>{media.Title}</Card.Title>
                   <p className="small">Authors: {book.authors}</p>
-                  <Card.Text>{book.description}</Card.Text>
+                  <Card.Text>{media.Plot}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
-                      disabled={savedBookIds?.some(
-                        (savedBookId) => savedBookId === book.bookId
+                      disabled={savedimdbIDs?.some(
+                        (savedimdbID) => savedimdbID === media.imdbID
                       )}
                       className="btn-block btn-info"
-                      onClick={() => handleSaveBook(book.bookId)}
+                      onClick={() => handleSaveMedia(media.imdbID)}
                     >
-                      {savedBookIds?.some(
-                        (savedBookId) => savedBookId === book.bookId
+                      {savedimdbIDs?.some(
+                        (savedimdbID) => savedimdbID === media.imdbID
                       )
-                        ? "This book has already been saved!"
-                        : "Save this Book!"}
+                        ? "This movie has already been saved!"
+                        : "Save this Movie!"}
                     </Button>
                   )}
                 </Card.Body>
@@ -171,4 +171,4 @@ const SearchBooks = () => {
   );
 };
 
-export default SearchBooks;
+export default SearchMedias;
