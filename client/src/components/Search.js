@@ -32,7 +32,7 @@ function Search() {
     <div className="search">
       <form>
         <label htmlFor="title">Title:</label>
-        <input type="title" name="title" onChange={handleChange}></input>
+        <input type="title" name="title" placeholder='Movie, TV Show, or Video Game' onChange={handleChange}></input>
       </form>
       {searchResults && (
         <div className="suggestions">
