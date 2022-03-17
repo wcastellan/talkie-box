@@ -102,7 +102,7 @@ const SearchMedias = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1>Search for Movies!</h1>
+          <h1>Search for Movies and Television Shows!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
@@ -112,7 +112,7 @@ const SearchMedias = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type="text"
                   size="lg"
-                  placeholder="Search for a movie"
+                  placeholder="Search here"
                 />
               </Col>
               <Col xs={12} md={4}>
@@ -129,7 +129,7 @@ const SearchMedias = () => {
         <h2>
           {searchedMedias.length
             ? `Viewing ${searchedMedias.length} results:`
-            : "Search for a movie to begin"}
+            : "Search to begin"}
         </h2>
         <CardColumns>
           {searchedMedias.map((media) => {
