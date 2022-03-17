@@ -14,7 +14,7 @@ const AppNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
-          <Navbar.Brand className="title" as={Link} to='/'>
+          <Navbar.Brand className="" as={Link} to='/'>
             Talkie-Box
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
