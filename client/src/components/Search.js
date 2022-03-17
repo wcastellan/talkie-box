@@ -31,8 +31,8 @@ function Search() {
   return (
     <div className="search">
       <form>
-        <label htmlFor="title">Title:</label>
-        <input type="title" name="title" onChange={handleChange}></input>
+        <label htmlFor="title">Search for Movies, TV Shows, and Video Games</label>
+        <input type="title" name="title" placeholder='Title' onChange={handleChange}></input>
       </form>
       {searchResults && (
         <div className="suggestions">
