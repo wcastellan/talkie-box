@@ -102,7 +102,7 @@ const SearchMedias = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1>Search for Books!</h1>
+          <h1>Search for Movies!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
@@ -144,18 +144,18 @@ const SearchMedias = () => {
                 ) : null}
                 <Card.Body>
                   <Card.Title>{media.Title}</Card.Title>
-                  <p className="small">Authors: {book.authors}</p>
+                  {/* <p className="small">Authors: {book.authors}</p> */}
                   <Card.Text>{media.Plot}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
-                      disabled={savedimdbIDs?.some(
-                        (savedimdbID) => savedimdbID === media.imdbID
+                      disabled={savedMediaIds?.some(
+                        (savedMediaId) => savedMediaId === media.imdbID
                       )}
                       className="btn-block btn-info"
                       onClick={() => handleSaveMedia(media.imdbID)}
                     >
-                      {savedimdbIDs?.some(
-                        (savedimdbID) => savedimdbID === media.imdbID
+                      {savedMediaIds?.some(
+                        (savedMediaId) => savedMediaId === media.imdbID
                       )
                         ? "This movie has already been saved!"
                         : "Save this Movie!"}
