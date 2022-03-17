@@ -1,5 +1,5 @@
 body {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'montserrat', sans-serif;
   }
   
   h1,
@@ -8,9 +8,15 @@ body {
   h4,
   h5,
   h6 {
-    font-family: 'Rubik Mono One', sans-serif;
+    font-family: 'LimeLight', sans-serif;
   }
   
+  .title {
+    font-family: 'Limelight', sans-serif;
+    font-size: 50px;
+    color: #DB504D;
+  }
+
   .small {
     font-weight: 300;
     font-style: italic;
@@ -33,7 +39,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid #CFCFCD;
     border-top: 0px;
     padding-right: 5px;
   }
