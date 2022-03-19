@@ -5,12 +5,12 @@ const Home = () => {
     <div>
       <h1>Welcome to talkie-box.</h1>
       <section>
-        <h2>What are you watching and playing?</h2>
-        <p>Share progress you've made in television series you're watching and in games you're playing. Let your friends know whether that media is HOT or NOT.</p>
+        <h2>What are you watching?</h2>
+        <p>Share which movies have caught your attention. Let your friends know whether those films are HOT or NOT.</p>
       </section>
       <section>
-        <h2>What are your friends watching and playing?</h2>
-        <p>Chances are your friends might be consuming the same media as you. Find out what they are labeling as HOT or NOT.</p>
+        <h2>What are your friends watching?</h2>
+        <p>Chances are others are interested in the same movies as you. Find out what they are labeling as HOT or NOT.</p>
       </section>
     </div>
   );
