@@ -50,7 +50,7 @@ function Search() {
   }
 
   return (
-    <div className="search">
+    <div className="search" class="search d-flex justify-content-center pt-4">
       {isModalOpen && <Modal currentMedia={currentMedia} onClose={toggleModal}/>}
       <form>
         <label htmlFor="title">Title:</label>

@@ -38,10 +38,13 @@ body {
   .search label {
     font-size: 1.75vw;
     color: white;
+    text-align: center;
+    width: 40vw;
   }
 
   .search > form {
     color: #191919;
+    width: 40vw;
   }
   
   .search > form > input {
@@ -121,3 +124,14 @@ body {
 	margin-bottom: 25px;
 }
 /* STYLING FOR MODAL */
+
+/* STYLING FOR LOGIN/SIGNUP MODAL */
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color:#DB504D;
+  color: white;
+}
+
+a {
+  color: #DB504D;
+}
