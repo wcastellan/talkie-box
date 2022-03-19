@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
@@ -8,6 +8,7 @@ import SavedMedias from "./pages/SavedMedias";
 import Navbar from "./components/Navbar";
 import Search from './components/Search';
 import Home from './pages/Home';
+import Modal from './components/Modal'
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -27,12 +28,25 @@ function App() {
     document.title = 'talkie-box'
   }, [])
   
+  const [currentMedia, setCurrentMedia] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function closeModal(){
+    setIsModalOpen(!isModalOpen);
+  }
+
   return (
     <ApolloProvider client={client}>
+      {isModalOpen && <Modal currentMedia={currentMedia} onClose={closeModal} />}
       <Router>
         <>
           <Navbar />
-          <Search />
+          <Search 
+            currentMedia={currentMedia}
+            setCurrentMedia={setCurrentMedia}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/saved" component={SavedMedias} />

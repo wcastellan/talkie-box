@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 
-function Search() {
+function Search({currentMedia, setCurrentMedia, isModalOpen, setIsModalOpen}) {
   
   const [formState, setFormState] = useState();
   const [searchResults, setSearchResults] = useState();
-  const [currentMedia, setCurrentMedia] = useState();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  
 
   function handleChange(e) {
     setFormState(e.target.value)
     const url = "https://www.omdbapi.com/?s="+formState+"&apikey=a3efed3d"
     // const url = "https://api.themoviedb.org/3/search/multi?api_key=5819b58cf0897290007e0637e78333fb&language=en-US&page=1&include_adult=false&query="+formState.title;
 
-    if (formState.length < 3) {
+    if (e.target.value.length < 3) {
       setSearchResults()
       return
     } else {
@@ -51,7 +48,6 @@ function Search() {
 
   return (
     <div className="search">
-      {isModalOpen && <Modal currentMedia={currentMedia} onClose={toggleModal}/>}
       <form>
         <label htmlFor="title">Title:</label>
         <input type="title" name="title" onChange={handleChange}></input>
@@ -64,7 +60,7 @@ function Search() {
                 src={media.Poster === "N/A" ? "https://www.warnersstellian.com/Content/images/product_image_not_available.png" : media.Poster}
                 alt={media.Title}
                 className="img-thumbnail mx-1"
-                key={i}
+                key={i+media.Title}
               />
               <div className="media-info">
                 <p className="media-title" onClick={() => toggleModal(media, i)} >{media.Title}</p>
