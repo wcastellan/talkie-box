@@ -29,7 +29,7 @@ function Search() {
   }
 
   return (
-    <div className="search">
+    <div className="search" class="search d-flex justify-content-center pt-5">
       <form>
         <label htmlFor="title">Search for Movies, TV Shows, and Video Games</label>
         <input type="title" name="title" placeholder='Title' onChange={handleChange}></input>
@@ -37,7 +37,7 @@ function Search() {
       {searchResults && (
         <div className="suggestions">
           {searchResults.map((film, i) => (
-            <div className="suggestion">
+            <div className="suggestion" class="suggestion d-flex justify-content-center">
               <img
                 src={film.Poster === "N/A" ? "https://www.warnersstellian.com/Content/images/product_image_not_available.png" : film.Poster}
                 alt={film.Title}

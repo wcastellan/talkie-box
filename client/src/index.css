@@ -13,7 +13,7 @@ body {
   
   .title {
     font-family: 'Limelight', sans-serif;
-    font-size: 50px;
+    font-size: 40px;
     color: #DB504D;
   }
 
@@ -24,15 +24,29 @@ body {
 
 /* STYLING FOR SEARCH BAR */
   .search{
-    width: 400px;
+    height: 200px;
+    width: auto;
+    background-color: #DB504D;
   }
   
+  .search div {
+    background-color: white;
+    width: 20vw;
+    height: 20vh;
+  }
+
+  .search label {
+    font-size: 1.75vw;
+    color: white;
+  }
+
   .search > form {
-    width: 100%;
+    color: #191919;
   }
   
   .search > form > input {
     width: 100%;
+    font-size: 1.25vw;
   }
   
   .suggestions{
@@ -42,10 +56,16 @@ body {
     border: 1px solid #CFCFCD;
     border-top: 0px;
     padding-right: 5px;
+    justify-items: center;
   }
   
+  .suggestions div {
+    width: 100%;
+  }
+
   .suggestion{
-    height: 80px;
+    height: 40vh;
+    width: 40vw;
     padding: 15px 5px;
     border-bottom: 1px solid #666;
     display: flex;
@@ -59,8 +79,8 @@ body {
   }
   
   .suggestion img {
-    width: 50px;
-    height: 75px;
+    width: 20vw;
+    height: 20vh;
     border-radius: 3px;
   }
   
