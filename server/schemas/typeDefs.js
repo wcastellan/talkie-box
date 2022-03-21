@@ -2,10 +2,10 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Media {
-    Title: String!
-    Plot: String!
+    title: String!
+    plot: String!
     imdbID: String!
-    Poster: String
+    poster: String
     link: String
     
   }
@@ -24,9 +24,9 @@ const typeDefs = gql`
 
   input SavedMediaInput {
     title: String
-    Plot: String
+    plot: String
     imdbID: String
-    Poster: String
+    poster: String
     link: String
   }
 

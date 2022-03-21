@@ -37,7 +37,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      {isModalOpen && <Modal currentMedia={currentMedia} onClose={closeModal} />}
+      {isModalOpen && <Modal currentMedia={currentMedia} onClose={closeModal} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
       <Router>
         <>
           <Navbar />

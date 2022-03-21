@@ -38,6 +38,7 @@ const resolvers = {
     },
     saveMedia: async (parent, { input }, context) => {
       if (context.user) {
+        console.log(input)
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { savedMedias: input } },
