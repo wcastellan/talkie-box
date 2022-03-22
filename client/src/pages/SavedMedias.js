@@ -1,4 +1,4 @@
-import React, { Link } from "react";
+import React from "react";
 import {
   Jumbotron,
   Container,
@@ -12,7 +12,6 @@ import Auth from "../utils/auth";
 import { removeMediaId, saveMediaIds } from "../utils/localStorage";
 import { GET_ME } from "../utils/queries";
 import { REMOVE_Media } from "../utils/mutations";
-import Discussion from "./Discussion";
 
 const SavedMedias = () => {
   const { loading, data } = useQuery(GET_ME);
@@ -71,13 +70,11 @@ const SavedMedias = () => {
             return (
               <Card key={media.imdbID} border="dark" >
                 {media.poster ? (
-                  <Link to="./Discussion">
                     <Card.Img 
                     src={media.poster}
                     alt={`The cover for ${media.title}`}
                     variant="top"
                   />
-                  </Link>
                 ) : null}
                 <Card.Body>
                   <Card.Title>{media.title}</Card.Title>
