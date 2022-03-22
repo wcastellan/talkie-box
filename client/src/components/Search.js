@@ -46,7 +46,7 @@ function Search({currentMedia, setCurrentMedia, isModalOpen, setIsModalOpen}) {
   }
 
   return (
-    <div className="search" class="search justify-content-center pt-4 text-center">
+    <div className="search" class="search justify-content-center pt-4 pb-4 text-center">
       <section class="welcome">
         <h1>Welcome to talkie-box.</h1>
       </section>
@@ -66,7 +66,7 @@ function Search({currentMedia, setCurrentMedia, isModalOpen, setIsModalOpen}) {
             <div class="col-12 justify-content-center suggestions2">
               {searchResults && (
                 <div className="suggestions">
-                  <br />
+                  {/* <br /> */}
                   {searchResults.map((media, i) => (
                     <div className="suggestion">
                       <img
