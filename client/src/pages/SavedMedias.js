@@ -45,6 +45,7 @@ const SavedMedias = () => {
 
   // sync localStorage with what was returned from the userData query
   const savedMediaIds = userData.savedMedias.map((media) => media.imdbID);
+
   saveMediaIds(savedMediaIds);
 
   return (
@@ -66,17 +67,17 @@ const SavedMedias = () => {
           {userData.savedMedias.map((media) => {
             return (
               <Card key={media.imdbID} border="dark">
-                {media.Poster ? (
+                {media.poster ? (
                   <Card.Img
-                    src={media.Poster}
-                    alt={`The cover for ${media.Title}`}
+                    src={media.poster}
+                    alt={`The cover for ${media.title}`}
                     variant="top"
                   />
                 ) : null}
                 <Card.Body>
-                  <Card.Title>{media.Title}</Card.Title>
+                  <Card.Title>{media.title}</Card.Title>
                   {/* <p className="small">Authors: {book.authors}</p> */}
-                  <Card.Text>{media.Plot}</Card.Text>
+                  <Card.Text>{media.plot}</Card.Text>
                   <Button
                     className="btn-block btn-danger"
                     onClick={() => handleDeleteMedia(media.imdbID)}
