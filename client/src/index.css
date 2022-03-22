@@ -36,31 +36,26 @@ body {
 
 /* STYLING FOR SEARCH BAR */
   .search{
-    height: 275px;
+    height: auto;
     width: auto;
     background-color: #DB504D;
   }
   
-  .search div {
-    background-color: white;
+  .search div{
     width: 40vw;
-    height: 20vh;
+    max-height: 80vh;
     z-index: 4;
-  }
-
-  .search label {
-    font-size: 1.75vw;
-    color: white;
-    text-align: center;
-    width: 40vw;
   }
 
   .search > form {
     color: #191919;
-    width: 40vw;
-    
+    width: 80vw;
   }
   
+  .search input {
+    width: 500px;
+  }
+
   .search > form > input {
     width: 100%;
     font-size: 1.25vw;
@@ -74,6 +69,8 @@ body {
     padding-right: 5px;
     justify-items: center;
     z-index: 1;
+    background-color: white;
+    overflow: scroll;
   }
   
   .suggestions div {
@@ -178,6 +175,7 @@ a {
   align-items: center;
   margin: auto;
   z-index: -1;
+  width: 100%;
 }
 
 .carouselh3 {
@@ -189,4 +187,38 @@ a {
   text-align: center;
   justify-content: center;
   display: flex;
+}
+
+/* media queries */
+@media screen and (max-width: 768px) {
+  .search input {
+    width: 400px;
+  }
+  .suggestions2 div {
+    width: 400px;
+    justify-content: center;
+  }
+  .search div {
+    width: 75vw;
+    max-height: 95vh;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .search form {
+    width: 250px;
+    justify-content: center;
+  }
+  .search input {
+    width: 250px;
+    justify-content: center;
+  }
+  .suggestions2 div {
+    width: 250px;
+    justify-content: center;
+  }
+  .search div {
+    width: 75vw;
+    max-height: 95vh;
+  }
 }
