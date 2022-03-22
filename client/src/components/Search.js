@@ -46,7 +46,13 @@ function Search({currentMedia, setCurrentMedia, isModalOpen, setIsModalOpen}) {
   }
 
   return (
-    <div className="search" class="search d-flex justify-content-center pt-4">
+    <div className="search" class="search justify-content-center pt-4">
+      <section class="welcome">
+        <h1>Welcome to talkie-box.</h1>
+      </section>
+      <section class="welcome2">
+        <h2>What are you watching?</h2>
+      </section>
       <form>
         <label htmlFor="title">Title:</label>
         <input type="title" name="title" onChange={handleChange}></input>

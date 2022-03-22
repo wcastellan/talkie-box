@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useMutation } from '@apollo/client';
 import { SAVE_MEDIA } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
+import { Redirect } from 'react-router-dom';
 
-function Modal({ currentMedia, onClose, isModalOpen, setIsModalOpen }) {
+function Modal({ currentMedia, setCurrentMedia, onClose, isModalOpen, setIsModalOpen }) {
   const { Title, Poster, Plot, Year, imdbID } = currentMedia
   const [saveMedia, { error }] = useMutation(SAVE_MEDIA, {
     update(cache, { data: { saveMedia } }) {

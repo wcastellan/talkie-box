@@ -8,7 +8,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .select("-__v -password");
-        
+
         return userData;
       }
       throw new AuthenticationError("Not logged in");
@@ -38,7 +38,6 @@ const resolvers = {
     },
     saveMedia: async (parent, { input }, context) => {
       if (context.user) {
-        console.log(input)
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { savedMedias: input } },
@@ -48,8 +47,9 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    removeMedia: async (parent, { bookId }, context) => {
+    removeMedia: async (parent, { imdbID }, context) => {
       if (context.user) {
+
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { savedMedias: { imdbID: imdbID } } },
