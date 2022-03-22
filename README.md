@@ -13,6 +13,8 @@
 
   ## Description:
   talkie-box is a web application that lets movie fans from all over to search and save their favorite movies, as well as discuss with others what they do and do not like about their movies.
+  <br>
+  <img src='image/talkiebox.PNG'>
 
   ## Installation:
   Once the code has been cloned, be sure to run 'npm i' in the root folder for the packages in all folders to be installed.
