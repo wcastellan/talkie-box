@@ -57,7 +57,7 @@ function Search({currentMedia, setCurrentMedia, searchResults, setSearchResults,
           <div class="row">
             <div class="col-12 d-flex justify-content-center">
               <form>
-                <input type="title" name="title" onChange={handleChange}></input>
+                <input type="title" name="title" placeholder="Movie title" onChange={handleChange}></input>
               </form>
             </div>
           </div>
