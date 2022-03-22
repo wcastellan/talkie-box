@@ -22,17 +22,30 @@ body {
     font-style: italic;
   }
 
+  .welcome{
+    justify-content: center;
+    color: white;
+    display: flex;
+  }
+
+  .welcome2 {
+    justify-content: center;
+    color: white;
+    display: flex;
+  }
+
 /* STYLING FOR SEARCH BAR */
   .search{
-    height: 200px;
+    height: 275px;
     width: auto;
     background-color: #DB504D;
   }
   
   .search div {
     background-color: white;
-    width: 20vw;
+    width: 40vw;
     height: 20vh;
+    z-index: 4;
   }
 
   .search label {
@@ -45,6 +58,7 @@ body {
   .search > form {
     color: #191919;
     width: 40vw;
+    
   }
   
   .search > form > input {
@@ -53,17 +67,18 @@ body {
   }
   
   .suggestions{
-    width: 100%;
     display: flex;
     flex-direction: column;
     border: 1px solid #CFCFCD;
     border-top: 0px;
     padding-right: 5px;
     justify-items: center;
+    z-index: 1;
   }
   
   .suggestions div {
     width: 100%;
+    justify-content: center;
   }
 
   .suggestion{
@@ -85,6 +100,7 @@ body {
     width: 20vw;
     height: 20vh;
     border-radius: 3px;
+    z-index: 3;
   }
   
   .media-info p {
@@ -95,6 +111,17 @@ body {
   .media-title{
     font-weight:bold;
   }
+
+  .formlabel {
+    display: flex;
+    justify-content: center;
+  }
+
+  .forminput {
+    display: flex;
+    justify-content: center;
+  }
+
 /* STYLING FOR SEARCH BAR */
 
 /* STYLING FOR MODAL */
@@ -139,6 +166,23 @@ a {
 /* Carousel Styling */
 
 .carousel {
-  height: 60vh;
-  width: 100%;
+  background-color: lightgrey;
+}
+
+.carousel, .carousel-inner img{
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  z-index: -1;
+}
+
+.carouselh3 {
+  color: #DB504D;
+  background: transparent;
+}
+
+.viewsaved {
+  text-align: center;
+  justify-content: center;
+  display: flex;
 }
