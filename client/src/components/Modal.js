@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { SAVE_MEDIA } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
 import { Redirect } from 'react-router-dom';
+import { saveMedias } from "../utils/localStorage";
 
 function Modal({ searchResults, setSearchResults, currentMedia, setCurrentMedia, onClose, isModalOpen, setIsModalOpen }) {
   const { Title, Poster, Plot, Year, imdbID } = currentMedia
@@ -19,6 +20,7 @@ function Modal({ searchResults, setSearchResults, currentMedia, setCurrentMedia,
       }
     }
   });
+  
   const handleAddCollectClick = async (event) => {
     event.preventDefault();
     try {

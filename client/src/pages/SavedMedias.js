@@ -9,13 +9,13 @@ import {
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import Auth from "../utils/auth";
-import { removeMediaId, saveMediaIds } from "../utils/localStorage";
+import { removeMediaId, saveMediaIds, saveMedias } from "../utils/localStorage";
 import { GET_ME } from "../utils/queries";
 import { REMOVE_Media } from "../utils/mutations";
 
-const SavedMedias = () => {
+const SavedMedias = ({ isModalOpen, setIsModalOpen }) => {
   const { loading, data } = useQuery(GET_ME);
-  const userData = data?.me || [];
+  let userData = data?.me || {};
 
   const [removeMedia, { error }] = useMutation(REMOVE_Media);
 
@@ -43,10 +43,17 @@ const SavedMedias = () => {
     return <h2>LOADING...</h2>;
   }
 
-  // sync localStorage with what was returned from the userData query
-  const savedMediaIds = userData.savedMedias.map((media) => media.imdbID);
 
-  saveMediaIds(savedMediaIds);
+  // sync localStorage with what was returned from the userData query
+  // const savedMediaIds = userData.savedMedias.map((media) => media.imdbID);
+  // saveMediaIds(savedMediaIds);
+
+  if (!userData.savedMedias) {
+    userData.savedMedias = JSON.parse(localStorage.getItem('medias'))
+    console.log(userData)
+  } else {
+    saveMedias(userData.savedMedias)
+  }
 
   return (
     <>

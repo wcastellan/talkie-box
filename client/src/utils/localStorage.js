@@ -1,3 +1,5 @@
+import SavedMedias from "../pages/SavedMedias";
+
 export const getSavedMediaIds = () => {
     const savedMediaIds = localStorage.getItem('saved_medias')
       ? JSON.parse(localStorage.getItem('saved_medias'))
@@ -13,6 +15,10 @@ export const getSavedMediaIds = () => {
       localStorage.removeItem('saved_medias');
     }
   };
+
+  export const saveMedias = (info) => {
+    localStorage.setItem('medias', JSON.stringify(info))
+  }
   
   export const removeMediaId = (imdbID) => {
     const savedMediaIds = localStorage.getItem('saved_medias')
