@@ -133,7 +133,7 @@ body {
 	position: fixed;
 	right: 0;
 	top: 0;
-	z-index: 1;
+	z-index: 6;
 }
 
 .modalContainer {
@@ -143,6 +143,10 @@ body {
 	margin: 50px auto;
 	padding: 15px;
 	width: 960px;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  text-align: center;
 }
 
 .modalTitle {
