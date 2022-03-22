@@ -7,10 +7,10 @@ export const GET_ME = gql`
       username
       email
       savedMedias {
-        Title
-        Plot
+        title
+        plot
         imdbID
-        Poster
+        poster
         link
       }
     }

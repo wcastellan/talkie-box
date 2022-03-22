@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Modal from "./Modal";
 
 function Search({currentMedia, setCurrentMedia, isModalOpen, setIsModalOpen}) {
   

@@ -32,10 +32,10 @@ export const SAVE_MEDIA = gql`
       _id
       mediaCount
       savedMedias {
-        Title
-        Plot
+        title
+        plot
         imdbID
-        Poster
+        poster
         link
       }
     }
