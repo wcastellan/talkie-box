@@ -43,16 +43,16 @@ export const SAVE_MEDIA = gql`
 `;
 
 export const REMOVE_Media = gql`
-  mutation removeMedia($bookId: String!) {
+  mutation removeMedia($imdbID: String!) {
     removeMedia(imdbID: $imdbID) {
       _id
       username
       mediaCount
-      savedmedias {
-        Title
-        Plot
+      savedMedias {
+        title
+        plot
         imdbID
-        Poster
+        poster
         link
       }
     }
