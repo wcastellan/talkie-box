@@ -46,35 +46,47 @@ function Search({currentMedia, setCurrentMedia, isModalOpen, setIsModalOpen}) {
   }
 
   return (
-    <div className="search" class="search justify-content-center pt-4">
+    <div className="search" class="search justify-content-center pt-4 text-center">
       <section class="welcome">
         <h1>Welcome to talkie-box.</h1>
       </section>
       <section class="welcome2">
         <h2>What are you watching?</h2>
       </section>
-      <form>
-        <label htmlFor="title">Title:</label>
-        <input type="title" name="title" onChange={handleChange}></input>
-      </form>
-      {searchResults && (
-        <div className="suggestions">
-          {searchResults.map((media, i) => (
-            <div className="suggestion">
-              <img
-                src={media.Poster === "N/A" ? "https://www.warnersstellian.com/Content/images/product_image_not_available.png" : media.Poster}
-                alt={media.Title}
-                className="img-thumbnail mx-1"
-                key={i+media.Title}
-              />
-              <div className="media-info">
-                <p className="media-title" onClick={() => toggleModal(media, i)} >{media.Title}</p>
-                <p className="media-type">type: {media.Type}</p>
-              </div>
+      <section>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+              <form>
+                <input type="title" name="title" onChange={handleChange}></input>
+              </form>
             </div>
-          ))}
+          </div>
+          <div class="row">
+            <div class="col-12 justify-content-center suggestions2">
+              {searchResults && (
+                <div className="suggestions">
+                  <br />
+                  {searchResults.map((media, i) => (
+                    <div className="suggestion">
+                      <img
+                        src={media.Poster === "N/A" ? "https://www.warnersstellian.com/Content/images/product_image_not_available.png" : media.Poster}
+                        alt={media.Title}
+                        className="img-thumbnail mx-1"
+                        key={i+media.Title}
+                      />
+                      <div className="media-info">
+                        <p className="media-title" onClick={() => toggleModal(media, i)} >{media.Title}</p>
+                        <p className="media-type">type: {media.Type}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      )}
+      </section>
     </div>
   )
 }
