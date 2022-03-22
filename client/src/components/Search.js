@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-function Search({currentMedia, setCurrentMedia, isModalOpen, setIsModalOpen}) {
+function Search({currentMedia, setCurrentMedia, searchResults, setSearchResults, isModalOpen, setIsModalOpen}) {
   
   const [formState, setFormState] = useState();
-  const [searchResults, setSearchResults] = useState();
 
   function handleChange(e) {
     setFormState(e.target.value)

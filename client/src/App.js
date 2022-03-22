@@ -28,6 +28,7 @@ function App() {
     document.title = 'talkie-box'
   }, [])
   
+  const [searchResults, setSearchResults] = useState();
   const [currentMedia, setCurrentMedia] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -40,9 +41,17 @@ function App() {
      
       <Router>
         <>
-        {isModalOpen && <Modal currentMedia={currentMedia} onClose={closeModal} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
+        {isModalOpen && <Modal
+          searchResults={searchResults}
+          setSearchResults={setSearchResults}
+          currentMedia={currentMedia} 
+          onClose={closeModal} 
+          isModalOpen={isModalOpen} 
+          setIsModalOpen={setIsModalOpen} />}
           <Navbar />
-          <Search 
+          <Search
+            searchResults={searchResults}
+            setSearchResults={setSearchResults}
             currentMedia={currentMedia}
             setCurrentMedia={setCurrentMedia}
             isModalOpen={isModalOpen}
