@@ -28,10 +28,11 @@ function App() {
     document.title = 'talkie-box'
   }, [])
   
+  const [watching, setWatching] = useState([]);
   const [searchResults, setSearchResults] = useState();
   const [currentMedia, setCurrentMedia] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  
   function closeModal(){
     setIsModalOpen(!isModalOpen);
   }
@@ -47,7 +48,10 @@ function App() {
           currentMedia={currentMedia} 
           onClose={closeModal} 
           isModalOpen={isModalOpen} 
-          setIsModalOpen={setIsModalOpen} />}
+          setIsModalOpen={setIsModalOpen}
+          watching={watching} 
+          setWatching={setWatching} 
+          />}
           <Navbar />
           <Search
             searchResults={searchResults}
@@ -59,7 +63,7 @@ function App() {
           />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/saved" component={SavedMedias} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+            <Route exact path="/saved" component={()=> <SavedMedias watching={watching} setWatching={setWatching}/>}/>
             <Route exact path="/discussion" component={Discussion} />
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>

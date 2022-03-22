@@ -45,24 +45,24 @@ function Search({currentMedia, setCurrentMedia, searchResults, setSearchResults,
   }
 
   return (
-    <div className="search" class="search justify-content-center pt-4 pb-4 text-center">
-      <section class="welcome">
+    <div className="search justify-content-center pt-4 pb-4 text-center">
+      <section className="welcome">
         <h1>Welcome to talkie-box.</h1>
       </section>
-      <section class="welcome2">
+      <section className="welcome2">
         <h2>What are you watching?</h2>
       </section>
       <section>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12 d-flex justify-content-center">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-12 d-flex justify-content-center">
               <form>
                 <input type="title" name="title" placeholder="Movie title" onChange={handleChange}></input>
               </form>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12 justify-content-center suggestions2">
+          <div className="row">
+            <div className="col-12 justify-content-center suggestions2">
               {searchResults && (
                 <div className="suggestions">
                   {/* <br /> */}

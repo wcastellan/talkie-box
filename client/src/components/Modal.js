@@ -5,7 +5,7 @@ import { GET_ME } from '../utils/queries';
 import { Redirect } from 'react-router-dom';
 import { saveMedias } from "../utils/localStorage";
 
-function Modal({ searchResults, setSearchResults, currentMedia, setCurrentMedia, onClose, isModalOpen, setIsModalOpen }) {
+function Modal({ searchResults, setSearchResults, currentMedia, setCurrentMedia, onClose, isModalOpen, setIsModalOpen, watching, setWatching}) {
   const { Title, Poster, Plot, Year, imdbID } = currentMedia
   const [saveMedia, { error }] = useMutation(SAVE_MEDIA, {
     update(cache, { data: { saveMedia } }) {
@@ -30,6 +30,11 @@ function Modal({ searchResults, setSearchResults, currentMedia, setCurrentMedia,
       });
       setIsModalOpen(!isModalOpen);
       setSearchResults();
+      let userSave = JSON.parse(localStorage.getItem('medias'))
+      userSave.push(input)
+      saveMedias(userSave)
+      setWatching(userSave);
+      
       
     } catch (e) {
       console.error(e);

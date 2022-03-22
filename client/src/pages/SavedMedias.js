@@ -13,7 +13,15 @@ import { removeMediaId, saveMediaIds, saveMedias } from "../utils/localStorage";
 import { GET_ME } from "../utils/queries";
 import { REMOVE_Media } from "../utils/mutations";
 
-const SavedMedias = ({ isModalOpen, setIsModalOpen }) => {
+
+
+
+
+
+const SavedMedias = ({ watching, setWatching }) => {
+  console.log('++++++++++')
+  console.log(watching)
+  console.log('++++++++++')
   const { loading, data } = useQuery(GET_ME);
   let userData = data?.me || {};
 
@@ -50,11 +58,11 @@ const SavedMedias = ({ isModalOpen, setIsModalOpen }) => {
 
   if (!userData.savedMedias) {
     userData.savedMedias = JSON.parse(localStorage.getItem('medias'))
-    console.log(userData)
   } else {
     saveMedias(userData.savedMedias)
   }
 
+  setWatching(userData.savedMedias);
   return (
     <>
       <Jumbotron fluid className="text-light bg-dark">
@@ -66,14 +74,14 @@ const SavedMedias = ({ isModalOpen, setIsModalOpen }) => {
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedMedias.length
-            ? `Viewing ${userData.savedMedias.length} saved ${
-                userData.savedMedias.length === 1 ? "media" : "medias"
+          {watching.length
+            ? `Viewing ${watching.length} saved ${
+                watching.length === 1 ? "media" : "medias"
               }:`
             : "You have no saved movies!"}
         </h2>
         <CardColumns>
-          {userData.savedMedias.map((media) => {
+          {watching.map((media) => {
             return (
               <Card key={media.imdbID} border="dark" >
                 {media.poster ? (
