@@ -188,6 +188,11 @@ justify-content: center;
 display: flex;
 }
 
+/* Discussion Styling */
+.reviews {
+  background-color: lightgrey;
+}
+
 /* media queries */
 @media screen and (max-width: 768px) {
 .search input {

@@ -39,7 +39,7 @@ const ReviewForm = ({match}) => {
   };
 
   return (
-    <div className='m-4 reviews card border-dark'>
+    <div className='m-4 card border-dark'>
       
       <form
         onSubmit={handleFormSubmit}
@@ -49,13 +49,14 @@ const ReviewForm = ({match}) => {
           placeholder='What did you think of this film?'
           value={reviewBody}
           onChange={handleChange}
-          className='m-4 reviews card'
+          className='ml-4 mb-2 card border border-dark'
+          style={{ width: 800, height: 100 }}
         ></textarea>
-        <p className={`m-0 ${characterCount === 300 ? 'text-error' : ''}`}>
+        <p className={`ml-4 ${characterCount === 300 ? 'text-error' : ''}`}>
           Character Count: {characterCount}/300
-          {error && <span className='ml-2'>Something went wrong</span>}
+          {error && <span className='ml-4'>Something went wrong</span>}
         </p>
-        <button type="submit" className="btn btn-danger mr-2">
+        <button type="submit" className="btn btn-danger mr-2 ml-4" >
           Submit
         </button>
       </form>
