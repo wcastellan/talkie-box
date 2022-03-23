@@ -7,8 +7,16 @@ const typeDefs = gql`
     imdbID: String!
     poster: String
     link: String
-    
+    discussion: [Discussion] 
   }
+
+  type Discussion {
+    _id: ID
+    discussionBody: String
+    createdAt: String
+    username: String
+  }
+
   type User {
     _id: ID
     username: String!
@@ -30,6 +38,12 @@ const typeDefs = gql`
     link: String
   }
 
+  input SavedDiscussionInput {
+    username: String
+    imdbID: String
+    discussionBody: String
+  }
+
   type Query {
     me: User
   }
@@ -39,6 +53,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     saveMedia(input: SavedMediaInput): User
     removeMedia(imdbID: String!): User
+    saveDiscussion(input: SavedDiscussionInput): Media
   }
 `;
 

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-errors");
-const { User } = require("../models");
+const { User, Media, Discussion } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -56,6 +56,20 @@ const resolvers = {
           { new: true }
         );
         return updatedUser;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    saveDiscussion: async (parent, { input }, context) => {
+      if (context.user) {
+
+        const imdbID = input.imdbID
+        const rest = {"username": input.username, "discussionBody": input.discussionBody}
+        const updateMedia = await Media.findOneAndUpdate(
+          {imdbID: imdbID},
+          { $addToSet: { discussion: rest} },
+          { new: true, runValidators: true }
+        );
+        return updateMedia;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
