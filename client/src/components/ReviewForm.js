@@ -39,20 +39,23 @@ const ReviewForm = ({match}) => {
   };
 
   return (
-    <div>
-      <p className={`m-0 ${characterCount === 300 ? 'text-error' : ''}`}>
-        Character Count: {characterCount}/300
-        {error && <span className='ml-2'>Something went wrong</span>}
-      </p>
+    <div className='m-4 reviews card border-dark'>
+      
       <form
         onSubmit={handleFormSubmit}
+        className='card-body'
       >
         <textarea
           placeholder='What did you think of this film?'
           value={reviewBody}
           onChange={handleChange}
+          className='m-4 reviews card'
         ></textarea>
-        <button type="submit">
+        <p className={`m-0 ${characterCount === 300 ? 'text-error' : ''}`}>
+          Character Count: {characterCount}/300
+          {error && <span className='ml-2'>Something went wrong</span>}
+        </p>
+        <button type="submit" className="btn btn-danger mr-2">
           Submit
         </button>
       </form>

@@ -39,13 +39,13 @@ const Discussion = () => {
         <section>
             <div className="card m-4 p-4 border border-dark">
                 <div className="moviediscussion card-title mb-0">
-                    <h1>Title: {discussionMedia.Title}</h1>
-                    <h3>Year: {discussionMedia.Year}</h3>
+                    <h1>{discussionMedia.Title}</h1>
+                    <h3>({discussionMedia.Year})</h3>
                 </div>
                 <div>
                     <img className="movieposters mb-2" src={discussionMedia.Poster} />
                     <p>
-                    Plot: {discussionMedia.Plot} 
+                    {discussionMedia.Plot} 
                     </p>
                 </div>
                 <div>

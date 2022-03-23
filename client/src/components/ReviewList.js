@@ -1,24 +1,23 @@
 import React from 'react';
 
 const ReviewList = ({reviews}) => {
-  console.log(reviews)
   if (!reviews.length) {
     return <h3>Be the first to review this film</h3>;
   }
   return (
-    <div>
-      <h3>
+    <div className='m-4 reviews card border-dark'>
+      <h3 className='card-title border-bottom border-danger'>
         User Reviews
       </h3>
-      <div>
+      <div className='card-body'>
         {reviews &&
           reviews.map(review => (
             <div key={review._id}>
-              <p>
+              <p className='card-text'>
                 {review.username} reviewed at {review.createdAt}
               </p>
               <div>
-                <p>{review.reviewBody}</p>
+                <p className='card-text'>{review.reviewBody}</p>
               </div>
             </div>
           ))
