@@ -1,21 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouteMatch } from "react-router-dom"
 
 const Discussion = () => {
     // const [hotVotes, setHotVotes] = useState(0);
     // const [coldVotes, setColdVotes] = useState(0);
     const [disableHot, setDisableHot] = useState(false);
     const [disableCold, setDisableCold] = useState(false);
+    const [discussionMedia, setDiscussionMedia] = useState({})
 
+    let match = useRouteMatch("/discussion/:imbdID").params.imbdID;
+
+    useEffect(() => {
+      const url = "http://www.omdbapi.com/?i="+match+"&apikey=a3efed3d";
+  
+      fetch(url)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data){
+        if (data.Response === "True"){
+          setDiscussionMedia(data);
+          return
+        }
+      })
+    });
+    
     return (
         <section>
             <div>
-                <h1>Title: The Lord of the Rings</h1>
-                <h2>Year: 1978</h2>
+                <h1>Title: {discussionMedia.Title}</h1>
+                <h2>Year: {discussionMedia.Year}</h2>
             </div>
             <div>
                 <img></img>
                 <p>
-                Plot: The Fellowship of the Ring embark on a journey to destroy the One Ring and end Sauron's reign over Middle-earth. 
+                Plot: {discussionMedia.Plot} 
                 </p>
             </div>
             <div>

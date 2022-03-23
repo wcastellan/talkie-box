@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import {
   Jumbotron,
   Container,
@@ -19,9 +20,6 @@ import { REMOVE_Media } from "../utils/mutations";
 
 
 const SavedMedias = ({ watching, setWatching }) => {
-  console.log('++++++++++')
-  console.log(watching)
-  console.log('++++++++++')
   const { loading, data } = useQuery(GET_ME);
   let userData = data?.me || {};
 
@@ -85,11 +83,13 @@ const SavedMedias = ({ watching, setWatching }) => {
             return (
               <Card key={media.imdbID} border="dark" >
                 {media.poster ? (
-                    <Card.Img 
-                    src={media.poster}
-                    alt={`The cover for ${media.title}`}
-                    variant="top"
-                  />
+                    <Link to={`/discussion/${media.imdbID}`}>
+                      <Card.Img 
+                      src={media.poster}
+                      alt={`The cover for ${media.title}`}
+                      variant="top"
+                      />
+                    </Link>
                 ) : null}
                 <Card.Body>
                   <Card.Title>{media.title}</Card.Title>

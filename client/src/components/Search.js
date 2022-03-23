@@ -29,7 +29,7 @@ function Search({currentMedia, setCurrentMedia, searchResults, setSearchResults,
 
   const toggleModal = (media) => {
 
-    const url2 = "http://www.omdbapi.com/?t="+media.Title+"&apikey=a3efed3d";
+    const url2 = "https://www.omdbapi.com/?t="+media.Title+"&apikey=a3efed3d";
   
     fetch(url2)
     .then(function(response) {

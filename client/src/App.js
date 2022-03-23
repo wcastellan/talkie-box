@@ -64,7 +64,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/saved" component={()=> <SavedMedias watching={watching} setWatching={setWatching}/>}/>
-            <Route exact path="/discussion" component={Discussion} />
+            <Route exact path="/discussion/:imbdId" component={Discussion} />
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
         </>
