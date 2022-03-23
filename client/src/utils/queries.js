@@ -18,12 +18,12 @@ export const GET_ME = gql`
 `;
 
 export const QUERY_REVIEWS = gql`
-  query reviews($username: String) {
-    reviews(username: $username) {
-      _id
-      reviewText
-      createdAt
+  query review($imdbID: String) {
+    review(imdbID: $imdbID) {
       username
+      reviewBody
+      imdbID
+      createdAt
     }
   }
 `;

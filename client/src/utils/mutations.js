@@ -60,10 +60,10 @@ export const REMOVE_Media = gql`
 `;
 
 export const ADD_REVIEW = gql`
-  mutation addReview($reviewText: String!) {
-    addReview(reviewText: $reviewText) {
-      _id
-      reviewText
+  mutation addReview($reviewBody: String!, $imdbID: String!) {
+    addReview(reviewBody: $reviewBody, imdbID: $imdbID) {
+      imdbID
+      reviewBody
       createdAt
       username
     }

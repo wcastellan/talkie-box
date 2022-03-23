@@ -13,11 +13,12 @@ const Discussion = () => {
     const [disableHot, setDisableHot] = useState(false);
     const [disableCold, setDisableCold] = useState(false);
     const [discussionMedia, setDiscussionMedia] = useState({})
-    const { loading, data } = useQuery(QUERY_REVIEWS);
-    const reviews = data?.reviews || [];
     const loggedIn = Auth.loggedIn();
 
     let match = useRouteMatch("/discussion/:imbdID").params.imbdID;
+    const { loading, data } = useQuery(QUERY_REVIEWS, {variables: { imdbID: match}});
+
+    let reviews = data?.review|| {};
 
     useEffect(() => {
       const url = "https://www.omdbapi.com/?i="+match+"&apikey=a3efed3d";
@@ -55,7 +56,7 @@ const Discussion = () => {
             <div>
                 {loggedIn && (
                     <div>
-                        <ReviewForm />
+                        <ReviewForm match={match}/>
                     </div>
                 )}
                 <div>

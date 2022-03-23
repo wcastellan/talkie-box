@@ -3,8 +3,8 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_REVIEW } from '../utils/mutations';
 import { QUERY_REVIEWS } from '../utils/queries';
 
-const ReviewForm = () => {
-  const [reviewText, setText] = useState('');
+const ReviewForm = ({match}) => {
+  const [reviewBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const [addReview, { error }] = useMutation(ADD_REVIEW, {
     update(cache, { data: { addReview } }) {
@@ -21,7 +21,7 @@ const ReviewForm = () => {
   });
   const handleChange = event => {
     if (event.target.value.length <= 300) {
-      setText(event.target.value);
+      setBody(event.target.value);
       setCharacterCount(event.target.value.length);
     }
   };
@@ -29,9 +29,9 @@ const ReviewForm = () => {
     event.preventDefault();
     try {
       await addReview({
-        variables: { reviewText }
+        variables: { reviewBody, "imdbID": match }
       });
-      setText('');
+      setBody('');
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
@@ -49,7 +49,7 @@ const ReviewForm = () => {
       >
         <textarea
           placeholder='What did you think of this film?'
-          value={reviewText}
+          value={reviewBody}
           onChange={handleChange}
         ></textarea>
         <button type="submit">

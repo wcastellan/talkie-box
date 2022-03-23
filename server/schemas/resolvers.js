@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-errors");
-const { User, Media, Review } = require("../models");
+const { User, Review } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -9,14 +9,19 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id })
         .select("-__v -password");
 
+        console.log(userData)
         return userData;
       }
       throw new AuthenticationError("Not logged in");
     },
-    reviews: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Review.find(params).sort({ createdAt: -1 });
-    }
+   
+    review: async (parent, {imdbID}) => {
+
+      const reviewData = await Review.find({ imdbID: imdbID })
+      .select("-__v");
+      
+      return reviewData;
+    },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -63,19 +68,15 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addReview: async (parent, { input }, context) => {
+    addReview: async (parent, args, context) => {
       if (context.user) {
 
-        const imdbID = input.imdbID
-        const rest = {"username": input.username, "discussionBody": input.discussionBody}
-        const updateMedia = await Media.findOneAndUpdate(
-          {imdbID: imdbID},
-          { $addToSet: { review: rest} },
-          { new: true, runValidators: true }
-        );
-        return updateMedia;
+        const review = await Review.create({ ...args, username: context.user.username });
+
+        return review;
       }
-      throw new AuthenticationError("You need to be logged in!");
+
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };

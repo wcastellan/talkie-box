@@ -7,22 +7,22 @@ const typeDefs = gql`
     imdbID: String!
     poster: String
     link: String
-    discussion: [Discussion] 
+    
   }
-
-  type Review {
-    _id: ID
-    reviewBody: String
-    createdAt: String
-    username: String
-  }
-
   type User {
     _id: ID
     username: String!
     email: String!
     mediaCount: Int
     savedMedias: [Media]
+  }
+
+  type Review {
+    _id: ID
+    imdbID: String
+    reviewBody: String
+    username: String
+    createdAt: String
   }
 
   type Auth {
@@ -38,15 +38,9 @@ const typeDefs = gql`
     link: String
   }
 
-  input SavedDiscussionInput {
-    username: String
-    imdbID: String
-    discussionBody: String
-  }
-
   type Query {
     me: User
-    reviews(username: String): [Review]
+    review(imdbID: String):[Review]
   }
 
   type Mutation {
@@ -54,7 +48,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     saveMedia(input: SavedMediaInput): User
     removeMedia(imdbID: String!): User
-    addReview(reviewText: String!): Review
+    addReview(imdbID: String!, reviewBody: String!): Review
   }
 `;
 
