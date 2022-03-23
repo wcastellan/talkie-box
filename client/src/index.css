@@ -188,6 +188,15 @@ a {
   display: flex;
 }
 
+/* discussion styling */
+.reviews {
+  background-color: lightgrey;
+}
+
+.movieposters{
+  max-height: 200px;
+}
+
 /* media queries */
 @media screen and (max-width: 768px) {
   .search input {
