@@ -11,7 +11,7 @@ const Discussion = () => {
     let match = useRouteMatch("/discussion/:imbdID").params.imbdID;
 
     useEffect(() => {
-      const url = "http://www.omdbapi.com/?i="+match+"&apikey=a3efed3d";
+      const url = "https://www.omdbapi.com/?i="+match+"&apikey=a3efed3d";
   
       fetch(url)
       .then(function(response) {
