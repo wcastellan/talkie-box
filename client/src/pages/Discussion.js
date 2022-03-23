@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from "react-router-dom"
+import Placeholder from '../assets/gonewiththewind.jpg'
 
 const Discussion = () => {
     // const [hotVotes, setHotVotes] = useState(0);
@@ -28,12 +29,12 @@ const Discussion = () => {
     return (
         <section>
             <div className="card m-4 p-4 border border-dark">
-                <div className="moviediscussion card-title">
+                <div className="moviediscussion card-title mb-0">
                     <h1>Title: {discussionMedia.Title}</h1>
                     <h3>Year: {discussionMedia.Year}</h3>
                 </div>
                 <div>
-                    <img></img>
+                    <img className="movieposters mb-2" src={Placeholder} />
                     <p>
                     Plot: {discussionMedia.Plot} 
                     </p>
