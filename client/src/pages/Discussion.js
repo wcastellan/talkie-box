@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from "react-router-dom"
-import Placeholder from '../assets/gonewiththewind.jpg'
+// import Placeholder from '../assets/gonewiththewind.jpg'
+import ReviewForm from '../components/ReviewForm';
+import ReviewList from '../components/ReviewList';
+import Auth from '../utils/auth';
+import { QUERY_REVIEWS } from '../utils/queries';
+import { useQuery } from '@apollo/react-hooks';
 
 const Discussion = () => {
     // const [hotVotes, setHotVotes] = useState(0);
@@ -8,6 +13,9 @@ const Discussion = () => {
     const [disableHot, setDisableHot] = useState(false);
     const [disableCold, setDisableCold] = useState(false);
     const [discussionMedia, setDiscussionMedia] = useState({})
+    const { loading, data } = useQuery(QUERY_REVIEWS);
+    const reviews = data?.reviews || [];
+    const loggedIn = Auth.loggedIn();
 
     let match = useRouteMatch("/discussion/:imbdID").params.imbdID;
 
@@ -44,7 +52,21 @@ const Discussion = () => {
                     <button className="btn btn-secondary" disabled={disableCold} onClick={() => (setDisableCold(true), setDisableHot(false))}>NOT</button>
                 </div>
             </div>
-            <div className="m-4 reviews card border-dark">
+            <div>
+                {loggedIn && (
+                    <div>
+                        <ReviewForm />
+                    </div>
+                )}
+                <div>
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <ReviewList reviews={reviews} title='User Reviews' />
+                    )}
+                </div>
+            </div>
+            {/* <div className="m-4 reviews card border-dark">
                 <div className="card-body">
                     <h3 className="card-title border-bottom border-danger">
                         User Reviews
@@ -56,7 +78,7 @@ const Discussion = () => {
                         Reviewed by username on 01/01/2022
                     </p>
                 </div>
-            </div>
+            </div> */}
         </section>
     )
 }

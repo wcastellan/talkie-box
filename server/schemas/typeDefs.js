@@ -10,9 +10,9 @@ const typeDefs = gql`
     discussion: [Discussion] 
   }
 
-  type Discussion {
+  type Review {
     _id: ID
-    discussionBody: String
+    reviewBody: String
     createdAt: String
     username: String
   }
@@ -46,6 +46,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
+    reviews(username: String): [Review]
   }
 
   type Mutation {
@@ -53,7 +54,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     saveMedia(input: SavedMediaInput): User
     removeMedia(imdbID: String!): User
-    saveDiscussion(input: SavedDiscussionInput): Media
+    addReview(reviewText: String!): Review
   }
 `;
 

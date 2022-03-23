@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-errors");
-const { User, Media, Discussion } = require("../models");
+const { User, Media, Review } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -13,6 +13,10 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+    reviews: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Review.find(params).sort({ createdAt: -1 });
+    }
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -59,14 +63,14 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    saveDiscussion: async (parent, { input }, context) => {
+    addReview: async (parent, { input }, context) => {
       if (context.user) {
 
         const imdbID = input.imdbID
         const rest = {"username": input.username, "discussionBody": input.discussionBody}
         const updateMedia = await Media.findOneAndUpdate(
           {imdbID: imdbID},
-          { $addToSet: { discussion: rest} },
+          { $addToSet: { review: rest} },
           { new: true, runValidators: true }
         );
         return updateMedia;
