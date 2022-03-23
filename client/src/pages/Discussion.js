@@ -12,7 +12,7 @@ const Discussion = () => {
     let match = useRouteMatch("/discussion/:imbdID").params.imbdID;
 
     useEffect(() => {
-      const url = "https://www.omdbapi.com/?i="+match+"&apikey=a3efed3d";
+      const url = "http://www.omdbapi.com/?i="+match+"&apikey=a3efed3d";
   
       fetch(url)
       .then(function(response) {
@@ -34,7 +34,7 @@ const Discussion = () => {
                     <h3>Year: {discussionMedia.Year}</h3>
                 </div>
                 <div>
-                    <img className="movieposters mb-2" src={Placeholder} />
+                    <img className="movieposters mb-2" src={discussionMedia.Poster} />
                     <p>
                     Plot: {discussionMedia.Plot} 
                     </p>

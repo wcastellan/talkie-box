@@ -1,232 +1,232 @@
 body {
-    font-family: 'montserrat', sans-serif;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'LimeLight', sans-serif;
-  }
-  
-  .title {
-    font-family: 'Limelight', sans-serif;
-    font-size: 40px;
-    color: #DB504D;
-  }
+  font-family: 'montserrat', sans-serif;
+}
 
-  .small {
-    font-weight: 300;
-    font-style: italic;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'LimeLight', sans-serif;
+}
 
-  .welcome{
-    justify-content: center;
-    color: white;
-    display: flex;
-  }
+.title {
+  font-family: 'Limelight', sans-serif;
+  font-size: 40px;
+  color: #DB504D;
+}
 
-  .welcome2 {
-    justify-content: center;
-    color: white;
-    display: flex;
-  }
+.small {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.welcome{
+  justify-content: center;
+  color: white;
+  display: flex;
+}
+
+.welcome2 {
+  justify-content: center;
+  color: white;
+  display: flex;
+}
 
 /* STYLING FOR SEARCH BAR */
-  .search{
-    height: auto;
-    width: auto;
-    background-color: #DB504D;
-  }
-  
-  .search div{
-    width: 40vw;
-    max-height: 80vh;
-    z-index: 4;
-  }
+.search{
+  height: auto;
+  width: auto;
+  background-color: #DB504D;
+}
 
-  .search > form {
-    color: #191919;
-    width: 80vw;
-  }
-  
-  .search input {
-    width: 500px;
-  }
+.search div{
+  width: 40vw;
+  max-height: 80vh;
+  z-index: 4;
+}
 
-  .search > form > input {
-    width: 100%;
-    font-size: 1.25vw;
-  }
-  
-  .suggestions{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #CFCFCD;
-    border-top: 0px;
-    padding-right: 5px;
-    justify-items: center;
-    z-index: 1;
-    background-color: white;
-    overflow: scroll;
-  }
-  
-  .suggestions div {
-    width: 100%;
-    justify-content: center;
-  }
+.search > form {
+  color: #191919;
+  width: 80vw;
+}
 
-  .suggestion{
-    height: 40vh;
-    width: 40vw;
-    padding: 15px 5px;
-    border-bottom: 1px solid #666;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .suggestion :hover{
-    background: gray;
-    cursor: pointer;
-  }
-  
-  .suggestion img {
-    width: 20vw;
-    height: 20vh;
-    border-radius: 3px;
-    z-index: 3;
-  }
-  
-  .media-info p {
-    margin: 5px 10px;
-    text-align: left;
-  }
-  
-  .media-title{
-    font-weight:bold;
-  }
+.search input {
+  width: 500px;
+}
 
-  .formlabel {
-    display: flex;
-    justify-content: center;
-  }
+.search > form > input {
+  width: 100%;
+  font-size: 1.25vw;
+}
 
-  .forminput {
-    display: flex;
-    justify-content: center;
-  }
+.suggestions{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #CFCFCD;
+  border-top: 0px;
+  padding-right: 5px;
+  justify-items: center;
+  z-index: 1;
+  background-color: white;
+  overflow: scroll;
+}
+
+.suggestions div {
+  width: 100%;
+  justify-content: center;
+}
+
+.suggestion{
+  height: 40vh;
+  width: 40vw;
+  padding: 15px 5px;
+  border-bottom: 1px solid #666;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.suggestion :hover{
+  background: gray;
+  cursor: pointer;
+}
+
+.suggestion img {
+  width: 20vw;
+  height: 20vh;
+  border-radius: 3px;
+  z-index: 3;
+}
+
+.media-info p {
+  margin: 5px 10px;
+  text-align: left;
+}
+
+.media-title{
+  font-weight:bold;
+}
+
+.formlabel {
+  display: flex;
+  justify-content: center;
+}
+
+.forminput {
+  display: flex;
+  justify-content: center;
+}
 
 /* STYLING FOR SEARCH BAR */
 
 /* STYLING FOR MODAL */
 .modalBackdrop {
-	background: rgba(0, 0, 0, .65);
-	bottom: 0;
-	left: 0;
-	overflow: auto;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 6;
+background: rgba(0, 0, 0, .65);
+bottom: 0;
+left: 0;
+overflow: auto;
+position: fixed;
+right: 0;
+top: 0;
+z-index: 6;
 }
 
 .modalContainer {
-	background: var(--darker);
-	border-radius: 5px;
-	max-width: 100%;
-	margin: 50px auto;
-	padding: 15px;
-	width: 960px;
-  justify-content: center;
-  background-color: white;
-  align-items: center;
-  text-align: center;
+background: var(--darker);
+border-radius: 5px;
+max-width: 100%;
+margin: 50px auto;
+padding: 15px;
+width: 960px;
+justify-content: center;
+background-color: white;
+align-items: center;
+text-align: center;
 }
 
 .modalTitle {
-	font-size: 18px;
-	font-weight: 600;
-	margin-bottom: 25px;
+font-size: 18px;
+font-weight: 600;
+margin-bottom: 25px;
 }
 /* STYLING FOR MODAL */
 
 /* STYLING FOR LOGIN/SIGNUP MODAL */
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  background-color:#DB504D;
-  color: white;
+background-color:#DB504D;
+color: white;
 }
 
 a {
-  color: #DB504D;
+color: #DB504D;
 }
 
 /* Carousel Styling */
 
 .carousel {
-  background-color: lightgrey;
+background-color: lightgrey;
 }
 
 .carousel, .carousel-inner img{
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  z-index: -1;
+justify-content: center;
+align-items: center;
+margin: auto;
+z-index: -1;
 }
 
 .carouselh3 {
-  color: #DB504D;
-  background: transparent;
+color: #DB504D;
+background: transparent;
 }
 
 .viewsaved {
-  text-align: center;
-  justify-content: center;
-  display: flex;
+text-align: center;
+justify-content: center;
+display: flex;
 }
 
 /* discussion styling */
 .reviews {
-  background-color: lightgrey;
+background-color: lightgrey;
 }
 
 .movieposters{
-  max-height: 200px;
+max-height: 200px;
 }
 
 /* media queries */
 @media screen and (max-width: 768px) {
-  .search input {
-    width: 400px;
-  }
-  .suggestions2 div {
-    width: 400px;
-    justify-content: center;
-  }
-  .search div {
-    width: 75vw;
-    max-height: 95vh;
-  }
+.search input {
+  width: 400px;
+}
+.suggestions2 div {
+  width: 400px;
+  justify-content: center;
+}
+.search div {
+  width: 75vw;
+  max-height: 95vh;
+}
 }
 
 @media screen and (max-width: 575px) {
-  .search form {
-    width: 250px;
-    justify-content: center;
-  }
-  .search input {
-    width: 250px;
-    justify-content: center;
-  }
-  .suggestions2 div {
-    width: 250px;
-    justify-content: center;
-  }
-  .search div {
-    width: 75vw;
-    max-height: 95vh;
-  }
+.search form {
+  width: 250px;
+  justify-content: center;
+}
+.search input {
+  width: 250px;
+  justify-content: center;
+}
+.suggestions2 div {
+  width: 250px;
+  justify-content: center;
+}
+.search div {
+  width: 75vw;
+  max-height: 95vh;
+}
 }
