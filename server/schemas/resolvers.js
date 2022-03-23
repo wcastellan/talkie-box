@@ -63,11 +63,23 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    // addReview: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const review = await Review.create({ ...args, username: context.user.username })
+    //     await User.findByIdAndUpdate(
+    //       { _id: context.user._id },
+    //       { $push: { reviews: review._id } },
+    //       { new: true }
+    //     );
+    //     return review;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
     addReview: async (parent, { input }, context) => {
       if (context.user) {
 
         const imdbID = input.imdbID
-        const rest = {"username": input.username, "discussionBody": input.discussionBody}
+        const rest = {"username": input.username, "reviewText": input.reviewText}
         const updateMedia = await Media.findOneAndUpdate(
           {imdbID: imdbID},
           { $addToSet: { review: rest} },

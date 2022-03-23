@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// import schema from Book.js
 const mediaSchema = require('./Media');
 
 const userSchema = new Schema(
@@ -21,8 +20,15 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
+      }
+    ],
     // set savedMedias to be an array of data that adheres to the mediaSchema
     savedMedias: [mediaSchema],
+    
   },
   // set this to use virtual below
   {

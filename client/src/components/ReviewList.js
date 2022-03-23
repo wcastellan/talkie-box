@@ -8,12 +8,12 @@ const ReviewList = (reviews) => {
     <div>
       {reviews &&
         reviews.map(review => (
-          <div key={review._id}>
-            <p>
+          <div className='m-4 reviews card border-dark' key={review._id}>
+            <p className='card-text'>
               {review.username} reviewed at {review.createdAt}
             </p>
             <div>
-              <p>{review.reviewText}</p>
+              <p className='card-text'>{review.reviewText}</p>
             </div>
           </div>
         ))

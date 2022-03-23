@@ -7,12 +7,12 @@ const typeDefs = gql`
     imdbID: String!
     poster: String
     link: String
-    discussion: [Discussion] 
+    reviews: [Review] 
   }
 
   type Review {
     _id: ID
-    reviewBody: String
+    reviewText: String
     createdAt: String
     username: String
   }
@@ -38,10 +38,10 @@ const typeDefs = gql`
     link: String
   }
 
-  input SavedDiscussionInput {
+  input SavedReviewInput {
     username: String
     imdbID: String
-    discussionBody: String
+    reviewText: String
   }
 
   type Query {

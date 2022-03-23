@@ -3,7 +3,7 @@ const dateFormat = require('../utils/dateFormat');
 
 const reviewSchema = new Schema(
   {
-    reviewBody: {
+    reviewText: {
       type: String,
       required: true,
       minlength: 1,
@@ -25,5 +25,7 @@ const reviewSchema = new Schema(
     }
   }
 );
+
+
 
 module.exports = reviewSchema;

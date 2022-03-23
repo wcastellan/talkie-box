@@ -11,7 +11,7 @@ const mediaSchema = new Schema({
     type: String,
     required: false,
   },
-  // saved book id from GoogleBooks
+  // saved movie id from imdb
   imdbID: {
     type: String,
     required: true,
@@ -24,5 +24,7 @@ const mediaSchema = new Schema({
   },
   reviews: [reviewSchema]
 });
+
+
 
 module.exports = mediaSchema;
